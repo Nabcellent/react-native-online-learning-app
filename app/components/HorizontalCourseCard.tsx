@@ -2,8 +2,9 @@ import { Image, ImageBackground, ImageSourcePropType, Text, TouchableOpacity, Vi
 import { COLORS, FONTS, icons, SIZES } from "../constants";
 import React from "react";
 import IconLabel from './IconLabel';
+import { connector, ReduxProps } from "../stores";
 
-type HorizontalCourseCardProps = {
+type HorizontalCourseCardProps = ReduxProps & {
     course: {
         id: number
         title: string
@@ -17,7 +18,7 @@ type HorizontalCourseCardProps = {
     containerStyle: ViewStyle
 }
 
-const HorizontalCourseCard = ({ course, containerStyle }: HorizontalCourseCardProps) => {
+const HorizontalCourseCard = ({ course, containerStyle, appTheme }: HorizontalCourseCardProps) => {
     return (
         <TouchableOpacity style={{ flexDirection: 'row', ...containerStyle }}>
             <ImageBackground source={course.thumbnail} resizeMode={'cover'}
@@ -30,7 +31,7 @@ const HorizontalCourseCard = ({ course, containerStyle }: HorizontalCourseCardPr
                     width: 30,
                     height: 30,
                     alignItems: 'center',
-                    justifyContent: 'center', borderRadius: 5, backgroundColor: COLORS.white
+                    justifyContent: 'center', borderRadius: 5, backgroundColor: appTheme.backgroundColor1
                 }}>
                     <Image source={icons.favourite} resizeMode={'contain'} style={{
                         width: 20,
@@ -41,10 +42,10 @@ const HorizontalCourseCard = ({ course, containerStyle }: HorizontalCourseCardPr
             </ImageBackground>
 
             <View style={{ flex: 1, marginLeft: SIZES.base }}>
-                <Text style={{ ...FONTS.h3, fontSize: 15 }}>{course.title}</Text>
+                <Text style={{ ...FONTS.h3, color: appTheme.textColor, fontSize: 15 }}>{course.title}</Text>
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: SIZES.base }}>
-                    <Text style={{ ...FONTS.body4 }}>By {course.instructor}</Text>
+                    <Text style={{ ...FONTS.body4, color: appTheme.textColor3 }}>By {course.instructor}</Text>
                     <IconLabel label={course.duration} icon={icons.time} containerStyle={{ marginLeft: SIZES.base }}
                                iconStyle={{ width: 15, height: 15 }} labelStyle={{ ...FONTS.body4 }}/>
                 </View>
@@ -54,11 +55,11 @@ const HorizontalCourseCard = ({ course, containerStyle }: HorizontalCourseCardPr
 
                     <IconLabel icon={icons.star} label={course.ratings} containerStyle={{ marginLeft: SIZES.base }}
                                iconStyle={{ width: 15, height: 15, tintColor: COLORS.primary2 }}
-                               labelStyle={{ marginLeft: 5, color: COLORS.black, ...FONTS.h4 }}/>
+                               labelStyle={{ marginLeft: 5, color: appTheme.textColor7, ...FONTS.h4 }}/>
                 </View>
             </View>
         </TouchableOpacity>
     );
 };
 
-export default HorizontalCourseCard;
+export default connector(HorizontalCourseCard);

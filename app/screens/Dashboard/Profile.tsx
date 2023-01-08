@@ -9,9 +9,7 @@ import TextButton from "../../components/TextButton";
 import ProfileValue from "../../components/ProfileValue";
 import LineDivider from "../../components/LineDivider";
 import ProfileRadioButton from "../../components/ProfileRadioButton";
-import { toggleTheme } from "../../stores/themeActions";
-import { connect, ConnectedProps } from "react-redux";
-import { RootState } from "../../stores";
+import { connector, ReduxProps } from "../../stores";
 import { SelectedThemeType } from "../../constants/theme";
 
 const ProfileCard = ({ appTheme }: { appTheme: SelectedThemeType }) => (
@@ -75,20 +73,7 @@ const ProfileCard = ({ appTheme }: { appTheme: SelectedThemeType }) => (
     </View>
 )
 
-const mapStateToProps = (state: RootState) => ({
-    appTheme: state.appTheme,
-    error: state.error
-})
-
-const mapDispatchToProps = (dispatch: any) => ({
-    toggleTheme: (themeType: string) => dispatch(toggleTheme(themeType))
-})
-
-const connector = connect(mapStateToProps, mapDispatchToProps)
-
-type PropsFromRedux = ConnectedProps<typeof connector>
-
-type ProfileProps = PropsFromRedux
+type ProfileProps = ReduxProps
 
 const Profile = ({ appTheme, toggleTheme }: ProfileProps) => {
     const [newCourseNotification, setNewCourseNotification] = useState(false)

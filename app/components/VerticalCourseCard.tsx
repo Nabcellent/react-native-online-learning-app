@@ -2,13 +2,14 @@ import { Image, ImageSourcePropType, Text, TouchableOpacity, View, ViewStyle } f
 import { COLORS, FONTS, SIZES } from "../constants";
 import icons from '../constants/icons';
 import IconLabel from './IconLabel';
+import { connector, ReduxProps } from "../stores";
 
-type VerticalCourseCardProps = {
+type VerticalCourseCardProps = ReduxProps & {
     containerStyle: ViewStyle
     course: { id: number, title: string, duration: string, thumbnail: ImageSourcePropType }
 }
 
-export const VerticalCourseCard = ({ containerStyle, course }: VerticalCourseCardProps) => (
+export const VerticalCourseCard = ({ containerStyle, course, appTheme }: VerticalCourseCardProps) => (
     <TouchableOpacity style={{ width: 270, ...containerStyle }}>
         <Image source={course.thumbnail} resizeMode={'cover'}
                style={{ width: '100%', height: 150, marginBottom: SIZES.radius, borderRadius: SIZES.radius }}/>
@@ -26,11 +27,11 @@ export const VerticalCourseCard = ({ containerStyle, course }: VerticalCourseCar
             </View>
 
             <View style={{ flexShrink: 1, paddingHorizontal: SIZES.radius }}>
-                <Text style={{ flex: 1, ...FONTS.h3, fontSize: 15 }}>{course.title}</Text>
+                <Text style={{ flex: 1, color: appTheme.textColor, ...FONTS.h3, fontSize: 15 }}>{course.title}</Text>
                 <IconLabel icon={icons.time} label={course.duration} containerStyle={{ marginTop: SIZES.base }}/>
             </View>
         </View>
     </TouchableOpacity>
 );
 
-export default VerticalCourseCard;
+export default connector(VerticalCourseCard);

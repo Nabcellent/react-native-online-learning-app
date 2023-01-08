@@ -2,14 +2,7 @@ import { GestureResponderEvent, Image, ImageSourcePropType, Text, TouchableOpaci
 import { COLORS, FONTS, SIZES } from "../constants";
 import React from "react";
 import icons from "../constants/icons";
-import { RootState } from "../stores";
-import { connect, ConnectedProps } from "react-redux";
-
-const mapStateToProps = (state: RootState) => ({ appTheme: state.appTheme, })
-
-const connector = connect(mapStateToProps)
-
-type ReduxProps = Partial<ConnectedProps<typeof connector>>
+import { connector, ReduxProps } from "../stores";
 
 type ProfileValueProps = ReduxProps & {
     icon: ImageSourcePropType

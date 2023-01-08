@@ -6,6 +6,8 @@ import Home from './Home';
 import Search from './Search';
 import Profile from './Profile';
 import { Shadow } from 'react-native-shadow-2';
+import { RootState } from "../../stores";
+import { connect, ConnectedProps } from "react-redux";
 
 type MeasureLayout = { x: number, y: number, width: number, height: number }
 
@@ -63,7 +65,14 @@ const Tabs = ({ scrollX, onTabPress }: { onTabPress: (tabIndex: number) => void,
     );
 };
 
-const MainLayout = () => {
+const mapStateToProps = (state: RootState) => ({ appTheme: state.appTheme, })
+
+const connector = connect(mapStateToProps)
+
+type ReduxProps = Partial<ConnectedProps<typeof connector>>
+type MainLayoutProps = ReduxProps
+
+const MainLayout = ({ appTheme }: MainLayoutProps) => {
     const flatListRef = useRef<FlatList<{ id: number; label: string; icon: any; }>>(null);
     const scrollX = useRef<Animated.Value>(new Animated.Value(0)).current;
 
@@ -89,9 +98,14 @@ const MainLayout = () => {
                                    )}/>
             </View>
 
-            <View style={{ marginBottom: 20, paddingHorizontal: SIZES.padding, paddingVertical: SIZES.radius }}>
+            <View style={{
+                paddingBottom: SIZES.height > 800 ? 20 : 5,
+                paddingHorizontal: SIZES.padding,
+                paddingVertical: SIZES.radius,
+                backgroundColor: appTheme?.backgroundColor1
+            }}>
                 <Shadow style={{ width: SIZES.width - (SIZES.padding * 2), height: 85 }}>
-                    <View style={{ flex: 1, borderRadius: SIZES.radius, backgroundColor: COLORS.primary3 }}>
+                    <View style={{ flex: 1, borderRadius: SIZES.radius, backgroundColor: appTheme?.backgroundColor2 }}>
                         <Tabs scrollX={scrollX} onTabPress={onTabPress}/>
                     </View>
                 </Shadow>
@@ -100,4 +114,4 @@ const MainLayout = () => {
     );
 };
 
-export default MainLayout;
+export default connector(MainLayout);
