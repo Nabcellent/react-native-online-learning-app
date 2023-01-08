@@ -121,6 +121,7 @@ export const lightTheme = {
 }
 
 export const selectedTheme = darkTheme
+export type SelectedThemeType = typeof selectedTheme
 
 const appTheme = { COLORS, SIZES, FONTS, darkTheme, lightTheme };
 

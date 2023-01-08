@@ -9,27 +9,19 @@ import TextButton from "../../components/TextButton";
 import ProfileValue from "../../components/ProfileValue";
 import LineDivider from "../../components/LineDivider";
 import ProfileRadioButton from "../../components/ProfileRadioButton";
+import { toggleTheme } from "../../stores/themeActions";
+import { connect, ConnectedProps } from "react-redux";
+import { RootState } from "../../stores";
+import { SelectedThemeType } from "../../constants/theme";
 
-const Header = () => (
-    <View style={{
-        flexDirection: 'row',
-        marginTop: 15,
-        paddingHorizontal: SIZES.padding,
-        justifyContent: 'space-between'
-    }}>
-        <Text style={{ ...FONTS.h1 }}>Profile</Text>
-        <IconButton icon={icons.sun} iconStyle={{ tintColor: COLORS.black }}/>
-    </View>
-)
-
-const ProfileCard = () => (
+const ProfileCard = ({ appTheme }: { appTheme: SelectedThemeType }) => (
     <View style={{
         flexDirection: 'row',
         marginTop: SIZES.padding,
         paddingHorizontal: SIZES.radius,
         paddingVertical: 20,
         borderRadius: SIZES.radius,
-        backgroundColor: COLORS.primary3
+        backgroundColor: appTheme.backgroundColor2
     }}>
         <TouchableOpacity style={{ width: 80, height: 80 }}>
             <Image source={images.profile} style={{
@@ -77,22 +69,49 @@ const ProfileCard = () => (
                 marginTop: SIZES.padding,
                 paddingHorizontal: SIZES.radius,
                 borderRadius: 20,
-                backgroundColor: COLORS.white
-            }} labelStyle={{ color: COLORS.primary }}/>
+                backgroundColor: appTheme.backgroundColor4
+            }} labelStyle={{ color: appTheme.textColor2 }}/>
         </View>
     </View>
 )
 
-const Profile = () => {
+const mapStateToProps = (state: RootState) => ({
+    appTheme: state.appTheme,
+    error: state.error
+})
+
+const mapDispatchToProps = (dispatch: any) => ({
+    toggleTheme: (themeType: string) => dispatch(toggleTheme(themeType))
+})
+
+const connector = connect(mapStateToProps, mapDispatchToProps)
+
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+type ProfileProps = PropsFromRedux
+
+const Profile = ({ appTheme, toggleTheme }: ProfileProps) => {
     const [newCourseNotification, setNewCourseNotification] = useState(false)
     const [studyReminder, setStudyReminder] = useState(false)
 
+    const handleToggleTheme = () => toggleTheme(appTheme.name === 'light' ? 'dark' : 'light')
+
     return (
-        <View style={{ flex: 1, backgroundColor: COLORS.white }}>
-            <Header/>
+        <View style={{ flex: 1, backgroundColor: appTheme.backgroundColor1 }}>
+            {/*Header*/}
+            <View style={{
+                flexDirection: 'row',
+                marginTop: 40,
+                paddingHorizontal: SIZES.padding,
+                justifyContent: 'space-between'
+            }}>
+                <Text style={{ color: appTheme.textColor, ...FONTS.h2 }}>Profile</Text>
+                <IconButton icon={icons.sun} iconStyle={{ tintColor: appTheme.tintColor }}
+                            onPress={() => handleToggleTheme()}/>
+            </View>
 
             <ScrollView contentContainerStyle={{ paddingHorizontal: SIZES.padding, paddingBottom: 150 }}>
-                <ProfileCard/>
+                <ProfileCard appTheme={appTheme}/>
 
                 {/*Profile Section One*/}
                 <View style={styles.profileSectionContainer}>
@@ -131,4 +150,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Profile;
+export default connector(Profile);

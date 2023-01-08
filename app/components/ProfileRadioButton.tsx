@@ -9,15 +9,23 @@ import {
     View
 } from "react-native";
 import { COLORS, FONTS, SIZES } from "../constants";
+import { RootState } from "../stores";
+import { connect, ConnectedProps } from "react-redux";
 
-type ProfileRadioButtonProps = {
+const mapStateToProps = (state: RootState) => ({ appTheme: state.appTheme, })
+
+const connector = connect(mapStateToProps)
+
+type ReduxProps = Partial<ConnectedProps<typeof connector>>
+
+type ProfileRadioButtonProps = ReduxProps & {
     icon: ImageSourcePropType
     label?: string
     checked: boolean
     onPress?: (event: GestureResponderEvent) => void
 }
 
-const ProfileRadioButton = ({ icon, label, checked, onPress }: ProfileRadioButtonProps) => {
+const ProfileRadioButton = ({ icon, label, checked, onPress, appTheme }: ProfileRadioButtonProps) => {
     const radioAnimated = useRef(new Animated.Value(0)).current
     const circleColorAnimated = radioAnimated.interpolate({
         inputRange: [0, 17],
@@ -52,19 +60,20 @@ const ProfileRadioButton = ({ icon, label, checked, onPress }: ProfileRadioButto
                 alignItems: 'center',
                 justifyContent: 'center',
                 borderRadius: 20,
-                backgroundColor: COLORS.additionalColor11
+                backgroundColor: appTheme?.backgroundColor3
             }}>
                 <Image source={icon} resizeMode={'contain'}
                        style={{ width: 25, height: 25, tintColor: COLORS.primary }}/>
             </View>
 
             <View style={{ flex: 1, marginLeft: SIZES.radius }}>
-                <Text style={{ ...FONTS.h3 }}>{label}</Text>
+                <Text style={{ color: appTheme?.textColor, ...FONTS.h3 }}>{label}</Text>
             </View>
 
             <TouchableOpacity style={{ width: 40, height: 40, alignItems: 'center', justifyContent: 'center' }}
                               onPress={onPress}>
-                <Animated.View style={{ width: '100%', height: 5, borderRadius: 3, backgroundColor: lineColorAnimated }}/>
+                <Animated.View
+                    style={{ width: '100%', height: 5, borderRadius: 3, backgroundColor: lineColorAnimated }}/>
                 <Animated.View style={{
                     position: 'absolute',
                     left: radioAnimated,
@@ -73,11 +82,11 @@ const ProfileRadioButton = ({ icon, label, checked, onPress }: ProfileRadioButto
                     borderRadius: 50,
                     borderWidth: 5,
                     borderColor: circleColorAnimated,
-                    backgroundColor: COLORS.white
+                    backgroundColor: appTheme?.backgroundColor1
                 }}/>
             </TouchableOpacity>
         </View>
     );
 };
 
-export default ProfileRadioButton;
+export default connector(ProfileRadioButton);

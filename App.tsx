@@ -4,6 +4,8 @@ import { MainLayout } from './app/screens';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useEffect } from 'react';
+import { Provider } from "react-redux";
+import { store } from "./app/stores";
 
 const Stack = createNativeStackNavigator();
 
@@ -12,6 +14,7 @@ SplashScreen.preventAutoHideAsync();
 
 export default function App() {
     let [fontsLoaded] = useFonts({
+        'Roboto-Black': require('./assets/fonts/Roboto-Black.ttf'),
         'Roboto-Bold': require('./assets/fonts/Roboto-Bold.ttf'),
         'Roboto-Regular': require('./assets/fonts/Roboto-Regular.ttf'),
     });
@@ -27,10 +30,12 @@ export default function App() {
     if (!fontsLoaded) return null;
 
     return (
-        <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName={'Dashboard'}>
-                <Stack.Screen name="Dashboard" component={MainLayout}/>
-            </Stack.Navigator>
-        </NavigationContainer>
+        <Provider store={store}>
+            <NavigationContainer>
+                <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName={'Dashboard'}>
+                    <Stack.Screen name="Dashboard" component={MainLayout}/>
+                </Stack.Navigator>
+            </NavigationContainer>
+        </Provider>
     );
 }

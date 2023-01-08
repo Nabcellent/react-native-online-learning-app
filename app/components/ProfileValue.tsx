@@ -2,22 +2,31 @@ import { GestureResponderEvent, Image, ImageSourcePropType, Text, TouchableOpaci
 import { COLORS, FONTS, SIZES } from "../constants";
 import React from "react";
 import icons from "../constants/icons";
+import { RootState } from "../stores";
+import { connect, ConnectedProps } from "react-redux";
 
-type ProfileValueProps = {
+const mapStateToProps = (state: RootState) => ({ appTheme: state.appTheme, })
+
+const connector = connect(mapStateToProps)
+
+type ReduxProps = Partial<ConnectedProps<typeof connector>>
+
+type ProfileValueProps = ReduxProps & {
     icon: ImageSourcePropType
     label?: string
     value: string
     onPress?: (event: GestureResponderEvent) => void
 }
-const ProfileValue = ({ icon, label, value, onPress }: ProfileValueProps) => (
-    <TouchableOpacity style={{ flexDirection: 'row', height: 80, alignItems: 'center' }}>
+
+const ProfileValue = ({ icon, label, value, onPress, appTheme }: ProfileValueProps) => (
+    <TouchableOpacity style={{ flexDirection: 'row', height: 80, alignItems: 'center' }} onPress={onPress}>
         <View style={{
             width: 40,
             height: 40,
             alignItems: 'center',
             justifyContent: 'center',
             borderRadius: 20,
-            backgroundColor: COLORS.additionalColor11
+            backgroundColor: appTheme?.backgroundColor3
         }}>
             <Image source={icon} resizeMode={'contain'} style={{ width: 25, height: 25, tintColor: COLORS.primary }}/>
         </View>
@@ -25,11 +34,11 @@ const ProfileValue = ({ icon, label, value, onPress }: ProfileValueProps) => (
         <View style={{ flex: 1, marginLeft: SIZES.radius }}>
             {label && <Text style={{ color: COLORS.gray30, ...FONTS.body3 }}>{label}</Text>}
 
-            <Text style={{ ...FONTS.h3 }}>{value}</Text>
+            <Text style={{ color: appTheme?.textColor, ...FONTS.h3 }}>{value}</Text>
         </View>
 
-        <Image source={icons.right_arrow} style={{ width: 15, height: 15 }}/>
+        <Image source={icons.right_arrow} style={{ width: 15, height: 15, tintColor: appTheme?.tintColor }}/>
     </TouchableOpacity>
 )
 
-export default ProfileValue
+export default connector(ProfileValue)
