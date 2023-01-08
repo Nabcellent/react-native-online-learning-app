@@ -2,32 +2,32 @@ const categories = [
     {
         id: 0,
         title: "Mobile Design",
-        thumbnail: require("../assets/images/bg_1.png")
+        thumbnail: require("../../assets/images/bg_1.png")
     },
     {
         id: 1,
         title: "3D Modeling",
-        thumbnail: require("../assets/images/bg_2.png")
+        thumbnail: require("../../assets/images/bg_2.png")
     },
     {
         id: 2,
         title: "Web Designing",
-        thumbnail: require("../assets/images/bg_3.png")
+        thumbnail: require("../../assets/images/bg_3.png")
     },
     {
         id: 3,
         title: "Illustrations",
-        thumbnail: require("../assets/images/bg_4.png")
+        thumbnail: require("../../assets/images/bg_4.png")
     },
     {
         id: 4,
         title: "Drawing",
-        thumbnail: require("../assets/images/bg_5.png")
+        thumbnail: require("../../assets/images/bg_5.png")
     },
     {
         id: 5,
         title: "Animation",
-        thumbnail: require("../assets/images/bg_6.png")
+        thumbnail: require("../../assets/images/bg_6.png")
     }
 ]
 
@@ -36,13 +36,13 @@ const courses_list_1 = [
         id: 0,
         title: "Canava Graphic Design Course - Beginner",
         duration: "2h 30m",
-        thumbnail: require("../assets/images/thumbnail_1.png")
+        thumbnail: require("../../assets/images/thumbnail_1.png")
     },
     {
         id: 1,
         title: "The Complete Presentation and speech",
         duration: "1h 30m",
-        thumbnail: require("../assets/images/thumbnail_2.png")
+        thumbnail: require("../../assets/images/thumbnail_2.png")
     }
 ]
 
@@ -55,7 +55,7 @@ const courses_list_2 = [
         ratings: 4.9,
         price: 75,
         is_favourite: true,
-        thumbnail: require("../assets/images/thumbnail_1.png")
+        thumbnail: require("../../assets/images/thumbnail_1.png")
     },
     {
         id: 1,
@@ -65,7 +65,7 @@ const courses_list_2 = [
         ratings: 4.9,
         price: 75,
         is_favourite: false,
-        thumbnail: require("../assets/images/thumbnail_2.png")
+        thumbnail: require("../../assets/images/thumbnail_2.png")
     },
     {
         id: 2,
@@ -75,7 +75,7 @@ const courses_list_2 = [
         ratings: 4.9,
         price: 75,
         is_favourite: true,
-        thumbnail: require("../assets/images/thumbnail_3.png")
+        thumbnail: require("../../assets/images/thumbnail_3.png")
     },
     {
         id: 3,
@@ -85,7 +85,7 @@ const courses_list_2 = [
         ratings: 4.9,
         price: 75,
         is_favourite: false,
-        thumbnail: require("../assets/images/thumbnail_4.png")
+        thumbnail: require("../../assets/images/thumbnail_4.png")
     },
     {
         id: 4,
@@ -95,7 +95,7 @@ const courses_list_2 = [
         ratings: 4.9,
         price: 75,
         is_favourite: false,
-        thumbnail: require("../assets/images/thumbnail_4.png")
+        thumbnail: require("../../assets/images/thumbnail_4.png")
     },
     {
         id: 5,
@@ -105,7 +105,7 @@ const courses_list_2 = [
         ratings: 4.9,
         price: 75,
         is_favourite: false,
-        thumbnail: require("../assets/images/thumbnail_4.png")
+        thumbnail: require("../../assets/images/thumbnail_4.png")
     }
 ]
 
@@ -181,22 +181,22 @@ const course_details = {
         {
             id: 0,
             name: "Student 1",
-            thumbnail: require("../assets/images/student_1.png")
+            thumbnail: require("../../assets/images/student_1.png")
         },
         {
             id: 1,
             name: "Student 2",
-            thumbnail: require("../assets/images/student_2.png")
+            thumbnail: require("../../assets/images/student_2.png")
         },
         {
             id: 2,
             name: "Student 3",
-            thumbnail: require("../assets/images/student_3.png")
+            thumbnail: require("../../assets/images/student_3.png")
         },
         {
             id: 3,
             name: "Student 3",
-            thumbnail: require("../assets/images/student_3.png")
+            thumbnail: require("../../assets/images/student_3.png")
         }
     ],
     files: [
@@ -205,27 +205,27 @@ const course_details = {
             name: "UI Fundamentals",
             author: "Shared by ByProgrammers",
             upload_date: "13th Sep 2021",
-            thumbnail: require("../assets/images/pdf.png")
+            thumbnail: require("../../assets/images/pdf.png")
         },
         {
             id: 1,
             name: "UX Checklist",
             author: "Shared by ByProgrammers",
             upload_date: "11th Sep 2021",
-            thumbnail: require("../assets/images/doc.png")
+            thumbnail: require("../../assets/images/doc.png")
         },
         {
             id: 2,
             name: "Sketch File",
             author: "Shared by ByProgrammers",
             upload_date: "7th Sep 2021",
-            thumbnail: require("../assets/images/sketch.png")
+            thumbnail: require("../../assets/images/sketch.png")
         }
     ],
     discussions: [
         {
             id: 0,
-            profile: require("../assets/images/profile.png"),
+            profile: require("../../assets/images/profile.png"),
             name: "ByProgrammers",
             no_of_comments: "11 comments",
             no_of_likes: "72 likes",
@@ -234,28 +234,28 @@ const course_details = {
             replies: [
                 {
                     id: 0,
-                    profile: require("../assets/images/student_1.png"),
+                    profile: require("../../assets/images/student_1.png"),
                     name: "ByProgrammers",
                     posted_on: "4 days ago",
                     comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
                 },
                 {
                     id: 1,
-                    profile: require("../assets/images/student_1.png"),
+                    profile: require("../../assets/images/student_1.png"),
                     name: "ByProgrammers",
                     posted_on: "4 days ago",
                     comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
                 },
                 {
                     id: 2,
-                    profile: require("../assets/images/student_1.png"),
+                    profile: require("../../assets/images/student_1.png"),
                     name: "ByProgrammers",
                     posted_on: "4 days ago",
                     comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
                 },
                 {
                     id: 3,
-                    profile: require("../assets/images/student_1.png"),
+                    profile: require("../../assets/images/student_1.png"),
                     name: "ByProgrammers",
                     posted_on: "4 days ago",
                     comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
@@ -264,7 +264,7 @@ const course_details = {
         },
         {
             id: 1,
-            profile: require("../assets/images/profile.png"),
+            profile: require("../../assets/images/profile.png"),
             name: "ByProgrammers",
             no_of_comments: "21 comments",
             no_of_likes: "372 likes",
@@ -273,21 +273,21 @@ const course_details = {
             replies: [
                 {
                     id: 0,
-                    profile: require("../assets/images/student_1.png"),
+                    profile: require("../../assets/images/student_1.png"),
                     name: "ByProgrammers",
                     posted_on: "7 days ago",
                     comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
                 },
                 {
                     id: 1,
-                    profile: require("../assets/images/student_1.png"),
+                    profile: require("../../assets/images/student_1.png"),
                     name: "ByProgrammers",
                     posted_on: "7 days ago",
                     comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
                 },
                 {
                     id: 2,
-                    profile: require("../assets/images/student_1.png"),
+                    profile: require("../../assets/images/student_1.png"),
                     name: "ByProgrammers",
                     posted_on: "7 days ago",
                     comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
@@ -303,21 +303,21 @@ const notificationByDays = [
         data: [
             {
                 id: 1,
-                avatar: require("../assets/images/student_1.png"),
+                avatar: require("../../assets/images/student_1.png"),
                 name: "Admin",
                 created_at: "2h 47m ago",
                 message: "Asked to join online courses regarding professional web designing."
             },
             {
                 id: 2,
-                avatar: require("../assets/images/student_2.png"),
+                avatar: require("../../assets/images/student_2.png"),
                 name: "Customer Care",
                 created_at: "3h 02m ago",
                 message: "Your 50% discount code is: ON50DIS. Apply on checkout."
             },
             {
                 id: 3,
-                avatar: require("../assets/images/student_3.png"),
+                avatar: require("../../assets/images/student_3.png"),
                 name: "Lilian Ellis",
                 created_at: "4h 32m ago",
                 message: "Asked assiged you to watch professional videography course."
@@ -330,14 +330,14 @@ const notificationByDays = [
         data: [
             {
                 id: 4,
-                avatar: require("../assets/images/student_1.png"),
+                avatar: require("../../assets/images/student_1.png"),
                 name: "Admin",
                 created_at: "16h 47m ago",
                 message: "You just signed in from another device check inbox for more details."
             },
             {
                 id: 5,
-                avatar: require("../assets/images/student_2.png"),
+                avatar: require("../../assets/images/student_2.png"),
                 name: "Customer Care",
                 created_at: "20h 02m ago",
                 message: "Your 50% discount code is: ON50DIS. Apply on checkout."
