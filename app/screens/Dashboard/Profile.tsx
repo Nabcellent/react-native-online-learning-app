@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { COLORS, FONTS, SIZES } from "../../constants";
 import IconButton from "../../components/IconButton";
@@ -7,6 +7,8 @@ import images from "../../constants/images";
 import ProgressBar from "../../components/ProgressBar";
 import TextButton from "../../components/TextButton";
 import ProfileValue from "../../components/ProfileValue";
+import LineDivider from "../../components/LineDivider";
+import ProfileRadioButton from "../../components/ProfileRadioButton";
 
 const Header = () => (
     <View style={{
@@ -81,13 +83,10 @@ const ProfileCard = () => (
     </View>
 )
 
-const ProfileSectionOne = () => (
-    <View style={styles.profileSectionContainer}>
-        <ProfileValue icon={icons.profile} label={'Name'} value={'Lil Berry'}/>
-    </View>
-)
-
 const Profile = () => {
+    const [newCourseNotification, setNewCourseNotification] = useState(false)
+    const [studyReminder, setStudyReminder] = useState(false)
+
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.white }}>
             <Header/>
@@ -95,7 +94,28 @@ const Profile = () => {
             <ScrollView contentContainerStyle={{ paddingHorizontal: SIZES.padding, paddingBottom: 150 }}>
                 <ProfileCard/>
 
-                <ProfileSectionOne/>
+                {/*Profile Section One*/}
+                <View style={styles.profileSectionContainer}>
+                    <ProfileValue icon={icons.profile} label={'Name'} value={'Lil Berry'}/>
+                    <LineDivider/>
+                    <ProfileValue icon={icons.email} label={'Email'} value={'tasha@gmail.com'}/>
+                    <LineDivider/>
+                    <ProfileValue icon={icons.password} label={'Password'} value={'Updated 2 weeks ago'}/>
+                    <LineDivider/>
+                    <ProfileValue icon={icons.call} label={'Phone number'} value={'+254 727 474 615'}/>
+                </View>
+
+                {/*Profile Section Two*/}
+                <View style={styles.profileSectionContainer}>
+                    <ProfileValue icon={icons.star_1} value={'Pages'}/>
+                    <LineDivider/>
+                    <ProfileRadioButton icon={icons.new_icon} label={'New Course Notifications'}
+                                        checked={newCourseNotification}
+                                        onPress={() => setNewCourseNotification(!newCourseNotification)}/>
+                    <LineDivider/>
+                    <ProfileRadioButton icon={icons.reminder} label={'Study Reminder'} checked={studyReminder}
+                                        onPress={() => setStudyReminder(!studyReminder)}/>
+                </View>
             </ScrollView>
         </View>
     )

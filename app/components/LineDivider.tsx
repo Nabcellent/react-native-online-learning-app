@@ -3,7 +3,7 @@ import { View, ViewStyle } from "react-native";
 import { COLORS } from "../constants";
 
 type LineDividerProps = {
-    lineStyle: ViewStyle
+    lineStyle?: ViewStyle
 }
 
 const LineDivider = ({ lineStyle }: LineDividerProps) => {

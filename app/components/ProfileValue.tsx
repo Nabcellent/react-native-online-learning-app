@@ -5,7 +5,7 @@ import icons from "../constants/icons";
 
 type ProfileValueProps = {
     icon: ImageSourcePropType
-    label: string
+    label?: string
     value: string
     onPress?: (event: GestureResponderEvent) => void
 }
