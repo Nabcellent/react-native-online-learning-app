@@ -2,12 +2,36 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { MainLayout } from './app/screens';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useEffect } from 'react';
 import { Provider } from "react-redux";
-import { store } from "./app/stores";
+import { ReduxProps, store } from "./app/stores";
+import { createSharedElementStackNavigator } from "react-navigation-shared-element";
+import { Easing } from "react-native";
+import CourseListing from "./app/screens/Course/CourseListing";
+import { StackNavigationOptions } from "@react-navigation/stack";
+import { Category } from "./app/utils/types";
 
-const Stack = createNativeStackNavigator();
+export type RootStackParamList = ReduxProps & {
+    Dashboard: undefined;
+    CourseListing: { category: Category, sharedElementPrefix: string };
+    Home: ReduxProps;
+};
+
+const Stack = createSharedElementStackNavigator<RootStackParamList>();
+const options: StackNavigationOptions = {
+    gestureEnabled: false,
+    transitionSpec: {
+        open: {
+            animation: 'timing',
+            config: { duration: 400, easing: Easing.inOut(Easing.ease) }
+        },
+        close: {
+            animation: 'timing',
+            config: { duration: 400, easing: Easing.inOut(Easing.ease) }
+        }
+    },
+    cardStyleInterpolator: ({ current: { progress } }) => ({ cardStyle: { opacity: progress } })
+}
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -32,8 +56,10 @@ export default function App() {
     return (
         <Provider store={store}>
             <NavigationContainer>
-                <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName={'Dashboard'}>
+                <Stack.Navigator screenOptions={{ headerShown: false }}
+                                 initialRouteName={'Dashboard'} detachInactiveScreens={false}>
                     <Stack.Screen name="Dashboard" component={MainLayout}/>
+                    <Stack.Screen name="CourseListing" component={CourseListing} options={() => options}/>
                 </Stack.Navigator>
             </NavigationContainer>
         </Provider>

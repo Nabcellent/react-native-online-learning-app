@@ -2395,6 +2395,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-navigation/elements@npm:^1.3.12":
+  version: 1.3.12
+  resolution: "@react-navigation/elements@npm:1.3.12"
+  peerDependencies:
+    "@react-navigation/native": ^6.0.0
+    react: "*"
+    react-native: "*"
+    react-native-safe-area-context: ">= 3.0.0"
+  checksum: 070bedf8caf0f35fb7c80452eff21413d41c9ac72f9017da969373f9caac74dfd3541df028a648852fe6e6881cd4158b4ddf3eda1afa1a414a9297cd475f902f
+  languageName: node
+  linkType: hard
+
 "@react-navigation/elements@npm:^1.3.5":
   version: 1.3.5
   resolution: "@react-navigation/elements@npm:1.3.5"
@@ -2444,6 +2456,24 @@ __metadata:
   dependencies:
     nanoid: ^3.1.23
   checksum: 5512a93733b040a988b741f56dc859f1cb1b78dc429e09652d42f378b2fbfc8ccc37d8dbdf470e479a2427ab72a1fb579678778eb025d5d49c6f5df7a6dfb7c4
+  languageName: node
+  linkType: hard
+
+"@react-navigation/stack@npm:^6.3.10":
+  version: 6.3.10
+  resolution: "@react-navigation/stack@npm:6.3.10"
+  dependencies:
+    "@react-navigation/elements": ^1.3.12
+    color: ^4.2.3
+    warn-once: ^0.1.0
+  peerDependencies:
+    "@react-navigation/native": ^6.0.0
+    react: "*"
+    react-native: "*"
+    react-native-gesture-handler: ">= 1.0.0"
+    react-native-safe-area-context: ">= 3.0.0"
+    react-native-screens: ">= 3.0.0"
+  checksum: 6efac9780dceeb0de65e69634ea75b955fdc9ebab6807f455d60c1037b67bf5a0cb5708790cf7808616a2ec53159822bba766c719648fb91a2c7fd9e4cd5f51a
   languageName: node
   linkType: hard
 
@@ -3638,7 +3668,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"color-string@npm:^1.5.3":
+"color-string@npm:^1.5.3, color-string@npm:^1.9.0":
   version: 1.9.1
   resolution: "color-string@npm:1.9.1"
   dependencies:
@@ -3654,6 +3684,16 @@ __metadata:
   bin:
     color-support: bin.js
   checksum: 9b7356817670b9a13a26ca5af1c21615463b500783b739b7634a0c2047c16cef4b2865d7576875c31c3cddf9dd621fa19285e628f20198b233a5cfdda6d0793b
+  languageName: node
+  linkType: hard
+
+"color@npm:^4.2.3":
+  version: 4.2.3
+  resolution: "color@npm:4.2.3"
+  dependencies:
+    color-convert: ^2.0.1
+    color-string: ^1.9.0
+  checksum: 0579629c02c631b426780038da929cca8e8d80a40158b09811a0112a107c62e10e4aad719843b791b1e658ab4e800558f2e87ca4522c8b32349d497ecb6adeb4
   languageName: node
   linkType: hard
 
@@ -7286,6 +7326,7 @@ __metadata:
     "@babel/core": ^7.12.9
     "@react-navigation/native": ^6.0.12
     "@react-navigation/native-stack": ^6.8.0
+    "@react-navigation/stack": ^6.3.10
     "@types/react": ~18.0.14
     "@types/react-native": ~0.69.1
     expo: ^47.0.12
@@ -7299,8 +7340,10 @@ __metadata:
     react-native-safe-area-context: 4.4.1
     react-native-screens: ~3.18.0
     react-native-shadow-2: ^7.0.5
+    react-native-shared-element: 0.8.4
     react-native-svg: 13.4.0
     react-native-web: ~0.18.9
+    react-navigation-shared-element: ^3.1.3
     react-redux: ^8.0.5
     redux: ^4.2.0
     redux-thunk: ^2.4.2
@@ -7951,6 +7994,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-shared-element@npm:0.8.4":
+  version: 0.8.4
+  resolution: "react-native-shared-element@npm:0.8.4"
+  checksum: 8c43bace8f8517014acee4924ca14eb6c1d8b01987f737d36b9cfadc97633cfe605a887501d1b730c1c2b814a91066533194cc88b544fd8ba7b5f9ed10dc72eb
+  languageName: node
+  linkType: hard
+
 "react-native-svg@npm:13.4.0":
   version: 13.4.0
   resolution: "react-native-svg@npm:13.4.0"
@@ -8023,6 +8073,19 @@ __metadata:
   bin:
     react-native: cli.js
   checksum: 5aca6e1dba32c450078117c874e368efa7e291fbf37263a30935e395475343ad78f87d4e41d12742cc16d9fcaebd5175a631962fc5d620daa312079782d0a66c
+  languageName: node
+  linkType: hard
+
+"react-navigation-shared-element@npm:^3.1.3":
+  version: 3.1.3
+  resolution: "react-navigation-shared-element@npm:3.1.3"
+  dependencies:
+    hoist-non-react-statics: ^3.3.2
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    react-native-shared-element: "*"
+  checksum: 5d6d3f415b891b79053a7e90bd23e1b6f425498a291e0f487e0c1c3b22b774e3b57afa123dcabd24a6fd6e75464ccc46d49ec52641ad1f17e52df444bb9f943e
   languageName: node
   linkType: hard
 

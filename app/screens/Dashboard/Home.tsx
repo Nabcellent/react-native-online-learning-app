@@ -13,6 +13,9 @@ import CategoryCard from '../../components/CategoryCard';
 import HorizontalCourseCard from '../../components/HorizontalCourseCard';
 import { connector, ReduxProps } from "../../stores";
 import { SelectedThemeType } from "../../constants/theme";
+import { RootStackParamList } from "../../../App";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 type SectionProps = {
     containerStyle?: ViewStyle,
@@ -34,9 +37,9 @@ const Section = ({ containerStyle, title, onPress, children, appTheme }: Section
     </View>
 );
 
-type HomeProps = ReduxProps
+const Home = ({ appTheme }: ReduxProps) => {
+    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>()
 
-const Home = ({ appTheme }: HomeProps) => {
     return (
         <View style={{ flex: 1, backgroundColor: appTheme?.backgroundColor1 }}>
             {/*Header*/}
@@ -103,11 +106,15 @@ const Home = ({ appTheme }: HomeProps) => {
                               keyExtractor={cat => `cat-${cat.id}`}
                               showsHorizontalScrollIndicator={false} contentContainerStyle={{ marginTop: SIZES.radius }}
                               renderItem={({ item, index }) => (
-                                  <CategoryCard category={item}
+                                  <CategoryCard sharedElementPrefix={'Home'} category={item}
                                                 containerStyle={{
                                                     marginLeft: index === 0 ? SIZES.padding : SIZES.base,
                                                     marginRight: index === dummyData.categories.length - 1 ? SIZES.padding : 0
-                                                }}/>
+                                                }}
+                                                onPress={() => navigation.navigate('CourseListing', {
+                                                    category: item,
+                                                    sharedElementPrefix: 'Home'
+                                                })}/>
                               )}/>
                 </Section>
 

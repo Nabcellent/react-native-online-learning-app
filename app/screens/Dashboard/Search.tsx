@@ -17,6 +17,9 @@ import { Shadow } from "react-native-shadow-2";
 import icons from "../../constants/icons";
 import { connector, ReduxProps } from '../../stores';
 import { SelectedThemeType } from "../../constants/theme";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../../../App";
 
 const SearchBar = ({ scrollY, appTheme }: { scrollY: SharedValue<number>, appTheme:SelectedThemeType }) => {
     const inputRange = [0, 55]
@@ -57,6 +60,8 @@ const SearchBar = ({ scrollY, appTheme }: { scrollY: SharedValue<number>, appThe
 
 type SearchProps = ReduxProps
 const Search = ({ appTheme }: SearchProps) => {
+    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>()
+
     const scrollViewRef = useRef<Animated.ScrollView>(null)
 
     const scrollY = useSharedValue(0)
@@ -103,12 +108,15 @@ const Search = ({ appTheme }: SearchProps) => {
                               keyExtractor={item => `browse-categories-${item.id}`}
                               contentContainerStyle={{ marginTop: SIZES.radius }}
                               renderItem={({ item, index: i }) => (
-                                  <CategoryCard category={item} containerStyle={{
+                                  <CategoryCard sharedElementPrefix={'Search'} category={item} containerStyle={{
                                       height: 130,
                                       width: (SIZES.width - (SIZES.padding * 2) - SIZES.radius) / 2,
                                       marginTop: SIZES.radius,
                                       marginLeft: (i + 1) % 2 === 0 ? SIZES.radius : SIZES.padding
-                                  }}/>
+                                  }} onPress={() => navigation.navigate('CourseListing', {
+                                      category: item,
+                                      sharedElementPrefix: 'Search'
+                                  })}/>
                               )}/>
                 </View>
             </Animated.ScrollView>

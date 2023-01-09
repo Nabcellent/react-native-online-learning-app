@@ -1,4 +1,6 @@
-const categories = [
+import { Category } from "../utils/types";
+
+const categories: Category[] = [
     {
         id: 0,
         title: "Mobile Design",
