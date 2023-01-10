@@ -23,6 +23,7 @@ import HorizontalCourseCard from "../../components/HorizontalCourseCard";
 import LineDivider from "../../components/LineDivider";
 import { FlatList } from "react-native-gesture-handler";
 import FilterModal from "../../components/FilterModal";
+import { Course } from "../../utils/types";
 
 type CourseListingProps = ReduxProps & StackScreenProps<RootStackParamList, 'CourseListing'>
 
@@ -33,7 +34,7 @@ const HEADER_HEIGHT = 250
 const CourseListing = ({ appTheme, navigation, route }: CourseListingProps) => {
     const { category, sharedElementPrefix } = route.params
 
-    const flatListRef = useRef<FlatList>()
+    const flatListRef = useRef<any>()
     const scrollY = useSharedValue(0)
     const onScroll = useAnimatedScrollHandler(e => scrollY.value = e.contentOffset.y)
     const inputRange = [0, HEADER_HEIGHT - 50]
@@ -65,7 +66,7 @@ const CourseListing = ({ appTheme, navigation, route }: CourseListingProps) => {
         <View style={{ flex: 1, backgroundColor: appTheme.backgroundColor1 }}>
             {/*Results*/}
             <AnimatedFlatList ref={flatListRef} data={dummyData.courses_list_2}
-                              keyExtractor={item => `results-${item.id}`}
+                              keyExtractor={item => `results-${(item as Course).id}`}
                               contentContainerStyle={{ paddingHorizontal: SIZES.padding }}
                               showsHorizontalScrollIndicator={false} scrollEventThrottle={16}
                               keyboardDismissMode={'on-drag'} onScroll={onScroll}
@@ -94,7 +95,7 @@ const CourseListing = ({ appTheme, navigation, route }: CourseListingProps) => {
                                       }/>
                                   </View>
                               } renderItem={({ item, index: i }) => (
-                <HorizontalCourseCard course={item} containerStyle={{
+                <HorizontalCourseCard course={item as Course} containerStyle={{
                     marginVertical: SIZES.padding,
                     marginTop: i == 0 ? SIZES.padding : SIZES.radius
                 }}/>
