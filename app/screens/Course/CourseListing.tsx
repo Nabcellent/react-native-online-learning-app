@@ -22,6 +22,7 @@ import dummyData from "../../constants/dummyData";
 import HorizontalCourseCard from "../../components/HorizontalCourseCard";
 import LineDivider from "../../components/LineDivider";
 import { FlatList } from "react-native-gesture-handler";
+import FilterModal from "../../components/FilterModal";
 
 type CourseListingProps = ReduxProps & StackScreenProps<RootStackParamList, 'CourseListing'>
 
@@ -37,6 +38,8 @@ const CourseListing = ({ appTheme, navigation, route }: CourseListingProps) => {
     const onScroll = useAnimatedScrollHandler(e => scrollY.value = e.contentOffset.y)
     const inputRange = [0, HEADER_HEIGHT - 50]
     const headerSharedValue = useSharedValue(80)
+    const filterModalShareValue1 = useSharedValue(SIZES.height)
+    const filterModalShareValue2 = useSharedValue(SIZES.height)
 
     headerSharedValue.value = withDelay(500, withTiming(0, { duration: 500 }))
 
@@ -84,7 +87,11 @@ const CourseListing = ({ appTheme, navigation, route }: CourseListingProps) => {
                                                       justifyContent: 'center',
                                                       borderRadius: 10,
                                                       backgroundColor: COLORS.primary
-                                                  }}/>
+                                                  }} onPress={() => {
+                                          filterModalShareValue1.value = withTiming(0, { duration: 100 })
+                                          filterModalShareValue2.value = withDelay(100, withTiming(0, { duration: 500 }))
+                                      }
+                                      }/>
                                   </View>
                               } renderItem={({ item, index: i }) => (
                 <HorizontalCourseCard course={item} containerStyle={{
@@ -166,6 +173,8 @@ const CourseListing = ({ appTheme, navigation, route }: CourseListingProps) => {
                                     headerHeightOnScrollAnimatedStyle
                                 ]}/>
             </Animated.View>
+
+            <FilterModal shareValue1={filterModalShareValue1} shareValue2={filterModalShareValue2}/>
         </View>
     );
 };

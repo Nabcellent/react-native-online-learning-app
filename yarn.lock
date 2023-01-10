@@ -2143,6 +2143,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ptomasroos/react-native-multi-slider@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "@ptomasroos/react-native-multi-slider@npm:2.2.2"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: f9e2263b4283cdd0011ad3c2e1ea6d70afe2c2f865a52c35e0f6c4fd948114762105a11f364e68da87de782490bfa1473540c6227e2e0033555e84827086464c
+  languageName: node
+  linkType: hard
+
 "@react-native-community/cli-clean@npm:^9.2.1":
   version: 9.2.1
   resolution: "@react-native-community/cli-clean@npm:9.2.1"
@@ -7324,6 +7334,7 @@ __metadata:
   resolution: "onlinelearningapp@workspace:."
   dependencies:
     "@babel/core": ^7.12.9
+    "@ptomasroos/react-native-multi-slider": ^2.2.2
     "@react-navigation/native": ^6.0.12
     "@react-navigation/native-stack": ^6.8.0
     "@react-navigation/stack": ^6.3.10

@@ -1,3 +1,5 @@
+import { ClassLevel, ClassType, CreatedWithin } from "../utils/types";
+
 const register_options = [
     {
         id: 0,
@@ -102,7 +104,7 @@ const bottom_tabs = [
     }
 ]
 
-const class_types = [
+const class_types: ClassType[] = [
     {
         id: 0,
         label: "All",
@@ -120,7 +122,7 @@ const class_types = [
     },
 ]
 
-const class_levels = [
+const class_levels: ClassLevel[] = [
     {
         id: 0,
         label: "Beginner"
@@ -135,7 +137,7 @@ const class_levels = [
     }
 ]
 
-const created_within = [
+const created_within: CreatedWithin[] = [
     {
         id: 0,
         label: "All Time"

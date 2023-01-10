@@ -16,3 +16,19 @@ export type Course = {
     is_favourite?: boolean
     thumbnail: ImageSourcePropType
 }
+
+export type ClassType = {
+    id: number,
+    label: string
+    icon: ImageSourcePropType
+}
+
+export type ClassLevel = {
+    id: number
+    label: string
+}
+
+export type CreatedWithin = {
+    id: number
+    label: string
+}
