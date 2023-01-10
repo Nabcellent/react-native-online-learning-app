@@ -1,20 +1,12 @@
-import { Image, ImageBackground, ImageSourcePropType, Text, TouchableOpacity, View, ViewStyle } from "react-native";
+import { Image, ImageBackground, Text, TouchableOpacity, View, ViewStyle } from "react-native";
 import { COLORS, FONTS, icons, SIZES } from "../constants";
 import React from "react";
 import IconLabel from './IconLabel';
 import { connector, ReduxProps } from "../stores";
+import { Course } from "../utils/types";
 
 type HorizontalCourseCardProps = ReduxProps & {
-    course: {
-        id: number
-        title: string
-        duration: string
-        instructor: string
-        ratings: number
-        price: number
-        is_favourite: boolean
-        thumbnail: ImageSourcePropType
-    },
+    course: Course,
     containerStyle: ViewStyle
 }
 
@@ -51,7 +43,10 @@ const HorizontalCourseCard = ({ course, containerStyle, appTheme }: HorizontalCo
                 </View>
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: SIZES.base }}>
-                    <Text style={{ ...FONTS.h3, color: COLORS.primary }}>KES {(course.price * 100).toFixed(2)}</Text>
+                    <Text style={{
+                        ...FONTS.h3,
+                        color: COLORS.primary
+                    }}>KES {((course?.price ?? 0) * 100).toFixed(2)}</Text>
 
                     <IconLabel icon={icons.star} label={course.ratings} containerStyle={{ marginLeft: SIZES.base }}
                                iconStyle={{ width: 15, height: 15, tintColor: COLORS.primary2 }}

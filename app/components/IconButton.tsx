@@ -1,16 +1,23 @@
-import { GestureResponderEvent, Image, ImageSourcePropType, StyleProp, TouchableOpacity } from 'react-native';
+import {
+    GestureResponderEvent,
+    Image,
+    ImageSourcePropType,
+    ImageStyle,
+    TouchableOpacity,
+    ViewStyle
+} from 'react-native';
 import { COLORS } from '../constants';
 
 type IconButtonProps = {
-    containerStyle?: StyleProp<any>
+    containerStyle?: ViewStyle
     icon:  ImageSourcePropType
-    iconStyle: StyleProp<any>
+    iconStyle: ImageStyle
     onPress?: (event: GestureResponderEvent) => void
 }
 
 const IconButton = ({ containerStyle, icon, iconStyle, onPress }: IconButtonProps) => (
     <TouchableOpacity style={{ ...containerStyle }} onPress={onPress}>
-        <Image source={icon} style={{ width: 30, height: 30, tintColor: COLORS.white, ...iconStyle }}/>
+        <Image source={icon} resizeMode={'contain'} style={{ width: 30, height: 30, tintColor: COLORS.white, ...iconStyle }}/>
     </TouchableOpacity>
 )
 

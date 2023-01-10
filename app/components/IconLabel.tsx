@@ -5,7 +5,7 @@ type IconLabelProps = {
     iconStyle?: ImageStyle,
     containerStyle: ViewStyle,
     labelStyle?: TextStyle,
-    label: string | number,
+    label?: string | number,
     icon: ImageSourcePropType,
 }
 

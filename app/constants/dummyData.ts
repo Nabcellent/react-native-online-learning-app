@@ -1,4 +1,4 @@
-import { Category } from "../utils/types";
+import { Category, Course } from "../utils/types";
 
 const categories: Category[] = [
     {
@@ -33,7 +33,7 @@ const categories: Category[] = [
     }
 ]
 
-const courses_list_1 = [
+const courses_list_1: Course[] = [
     {
         id: 0,
         title: "Canava Graphic Design Course - Beginner",
@@ -48,7 +48,7 @@ const courses_list_1 = [
     }
 ]
 
-const courses_list_2 = [
+const courses_list_2: Course[] = [
     {
         id: 0,
         title: "The Ultimate Ui/Ux Course Beginner to Advanced",
