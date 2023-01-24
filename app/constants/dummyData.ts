@@ -353,7 +353,8 @@ export default {
     categories,
     courses_list_1,
     courses_list_2,
-    top_searches,
     course_details,
     notificationByDays,
+    sample_video_url: 'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
+    top_searches
 }

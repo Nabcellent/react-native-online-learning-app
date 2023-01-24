@@ -91,14 +91,13 @@ const CourseListing = ({ appTheme, navigation, route }: CourseListingProps) => {
                                                   }} onPress={() => {
                                           filterModalShareValue1.value = withTiming(0, { duration: 100 })
                                           filterModalShareValue2.value = withDelay(100, withTiming(0, { duration: 500 }))
-                                      }
-                                      }/>
+                                      }}/>
                                   </View>
                               } renderItem={({ item, index: i }) => (
                 <HorizontalCourseCard course={item as Course} containerStyle={{
                     marginVertical: SIZES.padding,
                     marginTop: i == 0 ? SIZES.padding : SIZES.radius
-                }}/>
+                }} onPress={() => navigation.navigate('CourseDetails', { course: item as Course })}/>
             )} ItemSeparatorComponent={() => (
                 <LineDivider lineStyle={{ backgroundColor: COLORS.gray20 }}/>
             )}/>
@@ -180,13 +179,15 @@ const CourseListing = ({ appTheme, navigation, route }: CourseListingProps) => {
     );
 };
 
-CourseListing.sharedElements = (route: SharedElementCompatRoute) => {
-    const { category, sharedElementPrefix } = route.params
+CourseListing.sharedElements = (route: SharedElementCompatRoute, otherRoute: SharedElementCompatRoute) => {
+    if (otherRoute.name === 'Dashboard') {
+        const { category, sharedElementPrefix } = route.params
 
-    return [
-        { id: `${sharedElementPrefix}-category-card-bg-${category.id}` },
-        { id: `${sharedElementPrefix}-category-card-title-${category.id}` }
-    ]
+        return [
+            { id: `${sharedElementPrefix}-category-card-bg-${category.id}` },
+            { id: `${sharedElementPrefix}-category-card-title-${category.id}` }
+        ]
+    }
 }
 
 export default connector(CourseListing);

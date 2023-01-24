@@ -126,8 +126,9 @@ const Home = ({ appTheme }: ReduxProps) => {
                               renderItem={({ item, index }) => <HorizontalCourseCard course={item} containerStyle={{
                                   marginVertical: SIZES.padding,
                                   marginTop: index === 0 ? SIZES.radius : SIZES.padding
-                              }}/>} ItemSeparatorComponent={() => <LineDivider
-                        lineStyle={{ backgroundColor: COLORS.gray20 }}/>}/>
+                              }} onPress={() => navigation.navigate('CourseDetails', { course: item })}/>}
+                              ItemSeparatorComponent={() => <LineDivider
+                                  lineStyle={{ backgroundColor: COLORS.gray20 }}/>}/>
                 </Section>
             </ScrollView>
         </View>

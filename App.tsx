@@ -9,11 +9,13 @@ import { createSharedElementStackNavigator } from "react-navigation-shared-eleme
 import { Easing } from "react-native";
 import CourseListing from "./app/screens/Course/CourseListing";
 import { StackNavigationOptions } from "@react-navigation/stack";
-import { Category } from "./app/utils/types";
+import { Category, Course } from "./app/utils/types";
+import CourseDetails from "./app/screens/Course/CourseDetails";
 
 export type RootStackParamList = ReduxProps & {
     Dashboard: undefined;
     CourseListing: { category: Category, sharedElementPrefix: string };
+    CourseDetails: { course: Course };
     Home: ReduxProps;
 };
 
@@ -60,6 +62,7 @@ export default function App() {
                                  initialRouteName={'Dashboard'} detachInactiveScreens={false}>
                     <Stack.Screen name="Dashboard" component={MainLayout}/>
                     <Stack.Screen name="CourseListing" component={CourseListing} options={() => options}/>
+                    <Stack.Screen name="CourseDetails" component={CourseDetails}/>
                 </Stack.Navigator>
             </NavigationContainer>
         </Provider>

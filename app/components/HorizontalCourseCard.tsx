@@ -1,4 +1,4 @@
-import { Image, ImageBackground, Text, TouchableOpacity, View, ViewStyle } from "react-native";
+import { GestureResponderEvent, Image, ImageBackground, Text, TouchableOpacity, View, ViewStyle } from "react-native";
 import { COLORS, FONTS, icons, SIZES } from "../constants";
 import React from "react";
 import IconLabel from './IconLabel';
@@ -8,11 +8,12 @@ import { Course } from "../utils/types";
 type HorizontalCourseCardProps = ReduxProps & {
     course: Course,
     containerStyle: ViewStyle
+    onPress: (event: GestureResponderEvent) => void
 }
 
-const HorizontalCourseCard = ({ course, containerStyle, appTheme }: HorizontalCourseCardProps) => {
+const HorizontalCourseCard = ({ course, containerStyle, onPress, appTheme }: HorizontalCourseCardProps) => {
     return (
-        <TouchableOpacity style={{ flexDirection: 'row', ...containerStyle }}>
+        <TouchableOpacity style={{ flexDirection: 'row', ...containerStyle }} onPress={onPress}>
             <ImageBackground source={course.thumbnail} resizeMode={'cover'}
                              style={{ width: 130, height: 130, marginBottom: SIZES.radius }}
                              imageStyle={{ borderRadius: SIZES.radius }}>
